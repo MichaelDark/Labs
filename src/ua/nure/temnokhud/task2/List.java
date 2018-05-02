@@ -180,13 +180,7 @@ public class List<E> implements IList<E>, Iterable<E> {
     }
 
     public boolean contains(E el) {
-        for (int i = 0; i <= last; i++) {
-            if (container[i].equals(el)) {
-                return true;
-            }
-        }
-
-        return false;
+        return indexOf(el) != -1;
     }
 
     public E get(int index) {
