@@ -1,42 +1,26 @@
 package ua.nure.temnokhud.task1;
 
-public class Part9 {
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-    ///5-dimensional array, filled from 1 to 32    0_0
-    ///NO PARAMS O_O
-    public static void main (int... args) {
-        int[][][][][] array = new int[2][2][2][2][2];
-
-        for (int i = 0; i < 32; i++) {
-            int[] index = getIndexes(i);
-            array[index[4]][index[3]][index[2]][index[1]][index[0]] = i + 1;
-        }
-
-        System.out.println("Array: ");
-        for (int i = 0; i < 32; i++) {
-            int[] index = getIndexes(i);
-            System.out.println("array" +
-                    "[" + index[4] + "]" +
-                    "[" + index[3] + "]" +
-                    "[" + index[2] + "]" +
-                    "[" + index[1] + "]" +
-                    "[" + index[0] + "]" +
-                    array[index[4]][index[3]][index[2]][index[1]][index[0]]);
-        }
-        System.out.println();
+class Part9 {
+    private Part9() {
     }
 
-    public static int[] getIndexes(int n) {
-        int[] indexes = new int[5];
-        indexes[0] = n % 2;
-        n /= 2;
-        indexes[1] = n % 2;
-        n /= 2;
-        indexes[2] = n % 2;
-        n /= 2;
-        indexes[3] = n % 2;
-        n /= 2;
-        indexes[4] = n % 2;
-        return indexes;
+    public static void main() {
+        long time = System.currentTimeMillis();
+        int[][][][][] array = new int[2][2][2][2][2];
+        int[][] ind = new int[32][5];
+
+        for (int i = 0; i < 32; i++) {
+            ind[i] = getArrayBinaryValue(i, 5);
+            array[ind[i][4]][ind[i][3]][ind[i][2]][ind[i][1]][ind[i][0]] = i + 1;
+        }
+
+        for (int i = 0; i < 32; i++) {
+            out.print(array[ind[i][4]][ind[i][3]][ind[i][2]][ind[i][1]][ind[i][0]] + " ");
+        }
+        System.out.println("time" + (System.currentTimeMillis() - time));
+        out.println();
     }
 }

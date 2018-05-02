@@ -1,40 +1,28 @@
 package ua.nure.temnokhud.task1;
 
-public class Part6 {
+import java.util.Arrays;
 
-    ///Print first N Fibonacci numbers
-    ///@param - N
-    public static void main (int... args) {
-        if (args.length != 1) {
-            System.out.println("Exception: Wrong input");
-        }
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-        int n = args[0];
-
-        int[] fibonacciNumbers = getFibonacciNumbers(n);
-
-        printFibonacciNumbers(fibonacciNumbers);
+class Part6 {
+    private Part6() {
     }
 
-    public static int[] getFibonacciNumbers(int count) {
-        int[] fibNumbers = new int[count];
-        int fib0 = 0;
-        int fib1 = 1;
-
-        for (int i = 0; i < count; i++) {
-            fibNumbers[i] = fib1;
-            int tmp = fib1;
-            fib1 += fib0;
-            fib0 = tmp;
+    public static void main(String[] args) {
+        Integer n;
+        if (args.length < 1 || !isNumber(args[0])) {
+            printWrongInputError();
+            return;
         }
-        return fibNumbers;
-    }
-
-    public static void printFibonacciNumbers(int[] fibNumbers) {
-        System.out.println("First " + fibNumbers.length + " Fibonacci numbers: ");
-        for (int fib : fibNumbers) {
-            System.out.print(fib + " ");
+        n = Integer.parseInt(args[0]);
+        if (!isNatural(n)) {
+            printWrongInputError();
+            return;
         }
-        System.out.println();
+
+        int[] fibNumbers = getFibonacciNumbers(n);
+
+        out.println(Arrays.toString(fibNumbers));
     }
 }

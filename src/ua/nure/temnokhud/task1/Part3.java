@@ -1,31 +1,26 @@
 package ua.nure.temnokhud.task1;
 
-public class Part3 {
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-    ///Check whether the number is prime
-    ///@param - Number
-    public static void main (int... args) {
-        if (args.length != 1) {
-            System.out.println("Exception: Wrong input");
-        }
-
-        int n = args[0];
-
-        boolean isPrime = isPrimeNumber(args[0]);
-
-        printIsPrimeOrNot(n, isPrime);
+class Part3 {
+    private Part3() {
     }
 
-    public static boolean isPrimeNumber(int n) {
-        for(int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0 && n != i) {
-                return false;
-            }
+    public static void main(String[] args) {
+        Integer n;
+        if (args.length < 1 || !isNumber(args[0])) {
+            printWrongInputError();
+            return;
         }
-        return true;
-    }
+        n = Integer.parseInt(args[0]);
+        if (!isNatural(n)) {
+            printWrongInputError();
+            return;
+        }
 
-    public static void printIsPrimeOrNot(int n, boolean isPrime) {
-        System.out.println(n + " is " + (isPrime ? "" : "NOT ") + "A PRIME number");
+        boolean isPrime = isPrimeNumber(n);
+
+        out.println(isPrime);
     }
 }

@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Part2 {
+class Part2 {
 
     public static void main(String... args) {
         String[] rows = readAllFile("Part2.txt");
@@ -27,7 +27,7 @@ public class Part2 {
 
     }
 
-    public static String[] readAllFile(String filePath) {
+    private static String[] readAllFile(String filePath) {
         String fileText = "";
 
         try(FileReader reader = new FileReader("Part1.txt")) {
@@ -44,13 +44,13 @@ public class Part2 {
         return fileText.split("\r\n");
     }
 
-    public static void printRows(String[] rows) {
+    private static void printRows(String[] rows) {
         for(String row : rows) {
             System.out.println(row);
         }
     }
 
-    public static boolean hasEqualSymbols(String string) {
+    private static boolean hasEqualSymbols(String string) {
         char[] word = string.toCharArray();
 
         for(int i = 0; i < word.length; i++) {

@@ -1,50 +1,29 @@
 package ua.nure.temnokhud.task1;
 
-public class Part7 {
+import java.util.Arrays;
 
-    ///Print first N Prime numbers
-    ///@param - N
-    public static void main (int... args) {
-        if (args.length != 1) {
-            System.out.println("Exception: Wrong input");
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
+
+class Part7 {
+    private Part7() {
+    }
+
+    public static void main(String[] args) {
+        Integer n;
+        if (args.length < 1 || !isNumber(args[0])) {
+            printWrongInputError();
+            return;
         }
-
-        int n = args[0];
+        n = Integer.parseInt(args[0]);
+        if (!isNatural(n)) {
+            printWrongInputError();
+            return;
+        }
 
         int[] primeNumbers = getFirstPrimeNumbers(n);
 
-        printFirstPrimeNumbers(primeNumbers);
+        out.println(Arrays.toString(primeNumbers));
     }
 
-    public static int[] getFirstPrimeNumbers(int n) {
-        int[] primeNumbers = new int[n];
-        int index = 0;
-        int number = 2;
-
-        while (index < n) {
-            if (isPrimeNumber(number)) {
-                primeNumbers[index] = number;
-                index++;
-            }
-            number++;
-        }
-        return primeNumbers;
-    }
-
-    public static void printFirstPrimeNumbers(int[] primeNumbers) {
-        System.out.println("First " + primeNumbers.length + " Prime numbers: ");
-        for (int primeNumber : primeNumbers) {
-            System.out.print(primeNumber + " ");
-        }
-        System.out.println();
-    }
-
-    public static boolean isPrimeNumber(int n) {
-        for(int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0 && n != i) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

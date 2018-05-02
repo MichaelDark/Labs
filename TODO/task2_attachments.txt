@@ -1,0 +1,344 @@
+﻿Приложение к лабораторной работе №2
+_______________________
+
+
+Задание 1
+
+Содержимое метода Cirlce.main
+-------------------------------------------------------
+public static void main(String[] args) {
+    System.out.println("~~~ c");
+    Circle c = new Circle(0, 0, 1);
+    c.print();
+    System.out.println("~~~ c.move(1, 1)");
+    c.move(1, 1);
+    c.print();
+    System.out.println("~~~ c.isInside(1, 1)");
+    System.out.println(c.isInside(1, 1));
+    System.out.println("~~~ c.isInside(10, 1)");
+    System.out.println(c.isInside(10, 1));
+    System.out.println("~~~ c2");
+    Circle c2 = new Circle(1, 1, 2);
+    c2.print();
+    System.out.println("~~~ c.isInside(c2)");
+    System.out.println(c.isInside(c2));
+    System.out.println("~~~ c2.isInside(c)");
+    System.out.println(c2.isInside(c));
+}
+-------------------------------------------------------
+
+
+Результат (должен быть ровно таким)
+-------------------------------------------------------
+~~~ c
+Circle (0.0, 0.0, 1.0)
+~~~ c.move(1, 1)
+Circle (1.0, 1.0, 1.0)
+~~~ c.isInside(1, 1)
+true
+~~~ c.isInside(10, 1)
+false
+~~~ c2
+Circle (1.0, 1.0, 2.0)
+~~~ c.isInside(c2)
+false
+~~~ c2.isInside(c)
+true
+-------------------------------------------------------
+
+
+Задание 2
+
+Содержимое метода Matrix.main
+-------------------------------------------------------
+public static void main(String[] args) {
+    Matrix m = new Matrix(new double[][] {
+        {1.0, 2.0, 3.0},
+        {4.0, 5.0, 6.0}
+    });
+ 
+    Matrix m2 = new Matrix(new double[][] {
+        {1.0, 2.0, 3.0},
+        {4.0, 5.0, 6.0}
+    });
+ 
+    System.out.println("~~~ m");
+    m.print();
+ 
+    System.out.println("~~~ m2");
+    m2.print();
+ 
+    System.out.println("~~~ transpose m");
+    m.transpose();
+    m.print();
+ 
+    System.out.println("~~~ mul m on m2");
+    m.mul(m2);
+    m.print();
+ 
+    System.out.println("~~~ mul m2 on 2");
+    m2.mul(2);
+    m2.print();
+}
+-------------------------------------------------------
+
+
+Результат (должен быть ровно таким)
+-------------------------------------------------------
+~~~ m
+1.0 2.0 3.0
+4.0 5.0 6.0
+~~~ m2
+1.0 2.0 3.0
+4.0 5.0 6.0
+~~~ transpose m
+1.0 4.0
+2.0 5.0
+3.0 6.0
+~~~ mul m on m2
+17.0 22.0 27.0
+22.0 29.0 36.0
+27.0 36.0 45.0
+~~~ mul m2 on 2
+2.0 4.0 6.0
+8.0 10.0 12.0
+-------------------------------------------------------
+
+
+Задание 3
+
+Содержимое метода ListImpl.main
+-------------------------------------------------------
+public static void main(String[] args) {
+    System.out.println("~~~ list A B C");
+    System.out.println("~~~ Result: [A, B, C]");
+    List<String> list = new ListImpl<>();
+    list.add("A");
+    list.add("B");
+    list.add("C");
+    System.out.println(list);
+ 
+    System.out.println("~~~ list2: D E F");
+    System.out.println("~~~ Result: [D, E, F]");
+    List<String> list2 = new ListImpl<>();
+    list2.add("D");
+    list2.add("E");
+    list2.add("F");
+    System.out.println(list2);
+ 
+    System.out.println("~~~ list.addAll(list2)");
+    System.out.println("~~~ Result: [A, B, C, D, E, F]");
+    list.addAll(list2);
+    System.out.println(list);
+ 
+    System.out.println("~~~ list.add(C)");
+    System.out.println("~~~ Result: [A, B, C, D, E, F, C]");
+    list.add("C");
+    System.out.println(list);
+ 
+    System.out.println("~~~ list.clear()");
+    System.out.println("~~~ Result: []");
+    list.clear();
+    System.out.println(list);
+     
+    System.out.println("~~~ list.addAll(list2)");
+    System.out.println("~~~ Result: [D, E, F]");
+    list.addAll(list2);
+    System.out.println(list);
+         
+    System.out.println("~~~ list.contains(E)");
+    System.out.println("~~~ Result: true");
+    System.out.println(list.contains("E"));
+     
+    System.out.println("~~~ list.contains(С)");
+    System.out.println("~~~ Result: false");
+    System.out.println(list.contains("C"));       
+     
+    System.out.println("~~~ list.indexOf(D)");
+    System.out.println("~~~ Result: 0");
+    System.out.println(list.indexOf("D"));
+     
+    System.out.println("~~~ list.get(2)");
+    System.out.println("~~~ Result: F");
+    System.out.println(list.get(2));
+     
+    System.out.println("~~~ list.indexOf(F)");
+    System.out.println("~~~ Result: 2");
+    System.out.println(list.indexOf("F"));        
+     
+    System.out.println("~~~ list.size()");
+    System.out.println("~~~ Result: 3");
+    System.out.println(list.size());
+     
+    System.out.println("~~~ list");
+    System.out.println("~~~ Result: [D, E, F]");
+    System.out.println(list);
+     
+    System.out.println("~~~ list.remove(1)");
+    System.out.println("~~~ Result: [D, F]");
+    list.remove(1);
+    System.out.println(list);
+     
+    System.out.println("~~~ list.remove(F)");
+    System.out.println("~~~ Result: [D]");
+    list.remove("F");     
+    System.out.println(list);
+     
+    System.out.println("~~~ list.size()");
+    System.out.println("~~~ Result: 1");
+    System.out.println(list.size());
+ 
+    System.out.println("~~~ list.addAll(list2)");
+    System.out.println("~~~ Result: [D, D, E, F]");
+    list.addAll(list2);
+    System.out.println(list);
+ 
+    System.out.println("~~~ foreach list");
+    System.out.println("~~~ Result: D D E F");
+    for (String el : list) {
+        System.out.print(el + " ");
+    }
+    System.out.println();
+     
+    System.out.println("~~~ Iterator it = list.iterator()");      
+    Iterator<String> it = list.iterator();
+     
+    System.out.println("~~~ it.next()");
+    System.out.println("~~~ Result: D");
+    System.out.println(it.next());
+     
+    System.out.println("~~~ it.next()");
+    System.out.println("~~~ Result: D");      
+    System.out.println(it.next());
+     
+    System.out.println("~~~ it.remove()");
+    System.out.println("~~~ Result: [D, E, F]");
+    it.remove();        
+    System.out.println(list);
+     
+    System.out.println("~~~ it.next()");
+    System.out.println("~~~ Result: E");
+    System.out.println(it.next());
+     
+    System.out.println("~~~ it.remove()");
+    System.out.println("~~~ Result: [D, F]");
+    it.remove();
+    System.out.println(list);
+ 
+    System.out.println("~~~ it.next()");
+    System.out.println("~~~ Result: F");
+    System.out.println(it.next());
+     
+    System.out.println("~~~ it.remove()");
+    System.out.println("~~~ Result: [D]");
+    it.remove();
+    System.out.println(list);
+     
+    System.out.println("~~~ list.remove(D)");
+    System.out.println("~~~ Result: []");
+    list.remove("D");
+    System.out.println(list);
+     
+    System.out.println("~~~ list.addAll(list2)");
+    System.out.println("~~~ Result: [D, E, F]");
+    list.addAll(list2);
+    System.out.println(list);       
+ 
+    System.out.println("~~~ foreach list");
+    System.out.println("~~~ Result: D E F ");
+    for (String el : list) {
+        System.out.print(el + " ");
+    }
+    System.out.println();
+}
+-------------------------------------------------------
+
+
+Результат (должен быть ровно таким)
+-------------------------------------------------------
+~~~ list A B C
+~~~ Result: [A, B, C]
+[A, B, C]
+~~~ list2: D E F
+~~~ Result: [D, E, F]
+[D, E, F]
+~~~ list.addAll(list2)
+~~~ Result: [A, B, C, D, E, F]
+[A, B, C, D, E, F]
+~~~ list.add(C)
+~~~ Result: [A, B, C, D, E, F, C]
+[A, B, C, D, E, F, C]
+~~~ list.clear()
+~~~ Result: []
+[]
+~~~ list.addAll(list2)
+~~~ Result: [D, E, F]
+[D, E, F]
+~~~ list.contains(E)
+~~~ Result: true
+true
+~~~ list.contains(C)
+~~~ Result: false
+false
+~~~ list.indexOf(D)
+~~~ Result: 0
+0
+~~~ list.get(2)
+~~~ Result: F
+F
+~~~ list.indexOf(F)
+~~~ Result: 2
+2
+~~~ list.size()
+~~~ Result: 3
+3
+~~~ list
+~~~ Result: [D, E, F]
+[D, E, F]
+~~~ list.remove(1)
+~~~ Result: [D, F]
+[D, F]
+~~~ list.remove(F)
+~~~ Result: [D]
+[D]
+~~~ list.size()
+~~~ Result: 1
+1
+~~~ list.addAll(list2)
+~~~ Result: [D, D, E, F]
+[D, D, E, F]
+~~~ foreach list
+~~~ Result: D D E F
+D D E F 
+~~~ Iterator it = list.iterator()
+~~~ it.next()
+~~~ Result: D
+D
+~~~ it.next()
+~~~ Result: D
+D
+~~~ it.remove()
+~~~ Result: [D, E, F]
+[D, E, F]
+~~~ it.next()
+~~~ Result: E
+E
+~~~ it.remove()
+~~~ Result: [D, F]
+[D, F]
+~~~ it.next()
+~~~ Result: F
+F
+~~~ it.remove()
+~~~ Result: [D]
+[D]
+~~~ list.remove(D)
+~~~ Result: []
+[]
+~~~ list.addAll(list2)
+~~~ Result: [D, E, F]
+[D, E, F]
+~~~ foreach list
+~~~ Result: D E F 
+D E F
+-------------------------------------------------------

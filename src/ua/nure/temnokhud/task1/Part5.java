@@ -1,48 +1,26 @@
 package ua.nure.temnokhud.task1;
 
-public class Part5 {
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-    ///Number of 'lucky' N-numbers
-    ///@param - N
-    public static void main (int... args) {
-        if (args.length != 1) {
-            System.out.println("Exception: Wrong input");
-        }
-
-        int n = args[0];
-
-        long count = getCountOfLuckyNumbers(n);
-
-        printCountOfLuckyNumbers(n, count);
+class Part5 {
+    private Part5() {
     }
 
-    public static long getCountOfLuckyNumbers(int n) {
-        long res = 0;
-        int half = n / 2;
-        long minNumber = (long)Math.pow(10, half - 1);
-        long maxNumber = (long)Math.pow(10, half);
-
-        for (long i = minNumber; i < maxNumber; i++) {
-            for (long j = 0; j < maxNumber; j++) {
-                if (sumOfDigits(i) == sumOfDigits(j)) {
-                    res++;
-                }
-            }
+    public static void main(String[] args) {
+        Integer n;
+        if (args.length < 1 || !isNumber(args[0])) {
+            printWrongInputError();
+            return;
         }
-        return res;
-    }
-
-    public static void printCountOfLuckyNumbers(int n, long count) {
-        System.out.println("The number of 'lucky' " + n + "-numbers is " + count);
-    }
-
-    public static int sumOfDigits(long a) {
-        int res = 0;
-
-        while (a > 0) {
-            res += a % 10;
-            a /= 10;
+        n = Integer.parseInt(args[0]);
+        if (!isNatural(n) || !isEven(n)) {
+            printWrongInputError();
+            return;
         }
-        return res;
+
+        int count = getCountOfLuckyNumbers(n);
+
+        out.println(count);
     }
 }

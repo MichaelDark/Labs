@@ -1,46 +1,27 @@
 package ua.nure.temnokhud.task1;
 
-public class Part1 {
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-    ///Greatest common divisor
-    ///@param1 - Number 1
-    ///@param2 - Number 2
-    public static void main(int... args) {
-        if (args.length != 2) {
-            System.out.println("Exception: Wrong input");
-        }
-
-        int a = args[0];
-        int b = args[1];
-
-        int result_recursive = gcdRecursive(a, b);
-        int result_iterative = gcdIterative(a, b);
-
-        printGCD(a, b, result_iterative, result_recursive);
+class Part1 {
+    private Part1() {
     }
 
-    public static int gcdRecursive(int a, int b) {
-        if (b == 0) {
-            return a;
+    public static void main(String[] args) {
+        Integer a, b;
+        if (args.length < 2 || !isNumber(args[0]) || !isNumber(args[1])) {
+            printWrongInputError();
+            return;
         }
-        return gcdRecursive(b, a % b);
-    }
-
-    public static int gcdIterative(int a, int b) {
-        int tmp;
-
-        while(b != 0) {
-            tmp = b;
-            b = a % b;
-            a = tmp;
+        a = Integer.parseInt(args[0]);
+        b = Integer.parseInt(args[1]);
+        if (!isNatural(a) || !isNatural(b)) {
+            printWrongInputError();
+            return;
         }
-        return a;
-    }
 
-    public static void printGCD(int a, int b, int gcdIterative, int gcdRecursive) {
-        System.out.println("Greatest common divisor for " +
-                a + " and " + b +
-                " is " + gcdIterative +
-                " ( " + gcdRecursive + " )");
+        int result = getGreatestCommonDivisor(a, b);
+
+        out.println(result);
     }
 }

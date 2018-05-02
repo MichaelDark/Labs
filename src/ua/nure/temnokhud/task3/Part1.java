@@ -1,55 +1,84 @@
 package ua.nure.temnokhud.task3;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.lang.Character.*;
 
-public class Part1 {
+class Part1 {
 
     public static void main(String... args) {
-        String text = readAllFile("Part1.txt");
-        String[] rows = text.split("\r\n");
+        List<String> fileText = readAllFileLines("Part1.txt", "UTF8");
+
+        String buffer = fileText.get(0);
+        Matcher m = Pattern.compile("[a-zA-Zа-яА-ЯёЁіІїЇ]").matcher(buffer);
+
+        StringBuffer sb = new StringBuffer();
+        int last = 0;
+        while (m.find()) {
+            m.appendReplacement(sb, m.group())
+            sb.append(m.group(0).toUpperCase());
+            last = m.end();
+        }
+        sb.append(buffer.substring(last));
+
+        System.out.println(buffer.toString());
 
         System.out.println("Input before: ");
-        printRows(rows);
+        printRows(fileText);
 
-        for(int i = 0; i < rows.length; i++) {
-            String[] words = rows[i].split(" ");
-            for (int j = 0; j < words.length; j++) {
-                if (words[j].length() > 2) {
-                    words[j] = invertCase(words[j]);
-                }
-            }
-            rows[i] = String.join(" ", words);
-        }
-
-        System.out.println("Input after: ");
-        printRows(rows);
     }
 
-    public static String readAllFile(String filePath) {
-        String fileText = "";
+    private static List<String> readAllFileLines(String filePath, String charset) {
+        List<String> fileText = new ArrayList<String>();
+        try {
+            File fileDir = new File(filePath);
 
-        try(FileReader reader = new FileReader("Part1.txt")) {
-            String line = "";
-            BufferedReader bufferedReader = new BufferedReader(reader);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(fileDir), charset));
 
-            while((line = bufferedReader.readLine()) != null) {
-                fileText += line + "\r\n";
+            String str;
+
+            while ((str = in.readLine()) != null) {
+                fileText.add(str);
+                System.out.println(str);
             }
-            bufferedReader.close();
-        } catch(IOException ex){
-            System.out.println(ex.getMessage());
+
+            in.close();
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println(e.getMessage());
         }
         return fileText;
     }
 
-    public static void printRows(String[] rows) {
+    private static void printRows(String[] rows) {
         for(String row : rows) {
             System.out.println(row);
         }
     }
 
-    public static String invertCase(String string) {
+    private static void printRows(List<String> rows) {
+        for(int i = 0; i < rows.size(); i++) {
+            System.out.println(rows.get(i));
+        }
+    }
+
+    private static String invertCase(String string) {
         char[] symbols = string.toCharArray();
         for (int i = 0; i < symbols.length; i++)
         {

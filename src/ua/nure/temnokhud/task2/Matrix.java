@@ -1,43 +1,52 @@
 package ua.nure.temnokhud.task2;
 
-public class Matrix {
+import static java.lang.System.*;
+
+class Matrix {
 
     public static void main(String... args) {
-        Matrix matrix1 = new Matrix(new double[][]
-                {{1,  2.4,  3.5},
-                 {1,  6.32, 2.54},
-                 {6,  8.2,  9.2},
-                 {3,  2.3, 14.3}});
-        Matrix matrix2 = new Matrix(new double[][]
-                {{2,  9, 5.56},
-                 {4,  8, 7.62},
-                 {2,  5, 2.2},
-                 {1,  4, 1.2}});
-        Matrix matrix3 = new Matrix(new double[][]
-                {{2,  9, 5.56, 4},
-                 {4,  8, 7.62, 7},
-                 {2,  5, 2.2,  5}});
-        matrix1.print();
-        matrix2.print();
-        matrix3.print();
-        matrix1.add(matrix2);
-        matrix1.print();
-        matrix1.mul(2);
-        matrix1.print();
-        matrix1.mul(matrix3);
-        matrix1.print();
-        matrix1.transpose();
-        matrix1.print();
+        Matrix m = new Matrix(new double[][] {
+                {1.0, 2.0, 3.0},
+                {4.0, 5.0, 6.0}
+        });
+
+        Matrix m2 = new Matrix(new double[][] {
+                {1.0, 2.0, 3.0},
+                {4.0, 5.0, 6.0}
+        });
+
+        System.out.println("~~~ m");
+        m.print();
+
+        System.out.println("~~~ m2");
+        m2.print();
+
+        System.out.println("~~~ transpose m");
+        m.transpose();
+        m.print();
+
+        System.out.println("~~~ mul m on m2");
+        m.mul(m2);
+        m.print();
+
+        System.out.println("~~~ mul m2 on 2");
+        m2.mul(2);
+        m2.print();
     }
 
-    double[][] values;
-    int rowCount;
-    int colCount;
+    private double[][] values;
+    private int rowCount;
+    private int colCount;
 
     public Matrix(double[][] ar) {
         values = ar;
         rowCount = ar.length;
         colCount = ar[0].length;
+    }
+    public Matrix(int rows, int cols) {
+        values = new double[rows][cols];
+        rowCount = rows;
+        colCount = cols;
     }
 
     public int getRowCount() {
@@ -81,7 +90,6 @@ public class Matrix {
             }
         }
         values = newValues;
-        rowCount = newRowCount;
         colCount = newColCount;
     }
     public void transpose() {
@@ -97,13 +105,12 @@ public class Matrix {
         values = newValues;
     }
     public void print() {
-        System.out.printf("Matrix %dx%d:%n", rowCount, colCount);
+        out.printf("Matrix %dx%d:%n", rowCount, colCount);
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < colCount; j++) {
-                System.out.printf("%6.2f ", values[i][j]);
+                out.printf("%6.2f ", values[i][j]);
             }
-            System.out.println();
+            out.println();
         }
-        System.out.println();
     }
 }

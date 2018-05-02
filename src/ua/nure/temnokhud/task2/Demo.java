@@ -1,22 +1,24 @@
 package ua.nure.temnokhud.task2;
 
-public class Demo {
+import static java.lang.System.*;
 
-    public static final String[] EMPTY = {};
+class Demo {
+
+    private static final String[] EMPTY = {};
 
     public static void main(String[] args) {
-        System.out.println();
+        out.println();
 
-        System.out.println("=== Circle performance ===");
+        out.println("=== Circle performance ===");
         Circle.main(EMPTY);
-        System.out.println();
+        out.println();
 
-        System.out.println("=== Matrix performance ===");
+        out.println("=== Matrix performance ===");
         Matrix.main(EMPTY);
-        System.out.println();
+        out.println();
 
-        System.out.println("=== List performance ===");
-        MyList.main(EMPTY);
-        System.out.println();
+        out.println("=== List performance ===");
+        List.main(EMPTY);
+        out.println();
     }
 }

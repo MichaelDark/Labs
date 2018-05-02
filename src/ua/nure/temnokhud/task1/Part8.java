@@ -1,48 +1,29 @@
 package ua.nure.temnokhud.task1;
 
-public class Part8 {
+import static java.lang.System.out;
+import static ua.nure.temnokhud.task1.Functions.*;
 
-    ///Prints chess field NxM using Ч and Б
-    ///@param1 - Height of field
-    ///@param2 - Width of field
-    public static void main(int... args) {
-        if (args.length != 2) {
-            System.out.println("Exception: Wrong input");
-        }
-
-        int height = args[0];
-        int width = args[1];
-
-        String[] chessField = getChessField(height, width);
-
-        printChessField(height, width, chessField);
+class Part8 {
+    private Part8() {
     }
 
-    public static String[] getChessField(int height, int width) {
-        String[] field = new String[height];
-        for (int i = 0; i < height; i++) {
-            field[i] = getLine(width, i % 2 == 0);
+    public static void main(String[] args) {
+        Integer a, b;
+        if (args.length < 2 || !isNumber(args[0]) || !isNumber(args[1])) {
+            printWrongInputError();
+            return;
         }
-        return field;
-    }
-
-    public static String getLine(int length, boolean startsWithCh) {
-        char[] symbols = new char[] {'Ч', 'Б'};
-        boolean currentSymbolIsCh = startsWithCh;
-        String result = "";
-
-        for (int i = 0; i < length; i++) {
-            result += symbols[currentSymbolIsCh ? 0 : 1];
-            currentSymbolIsCh = !currentSymbolIsCh;
+        a = Integer.parseInt(args[0]);
+        b = Integer.parseInt(args[1]);
+        if (!isNatural(a) || !isNatural(b)) {
+            printWrongInputError();
+            return;
         }
-        return result;
-    }
 
-    public static void printChessField(int height, int width, String[] field) {
-        System.out.println("ЧБ matrix " + height + "x" + width + ": ");
-        for(String line : field) {
-            System.out.println(line);
+        String[] chessField = getChessField(a, b, "Ч", "Б");
+
+        for (String line : chessField) {
+            out.println(line);
         }
-        System.out.println();
     }
 }

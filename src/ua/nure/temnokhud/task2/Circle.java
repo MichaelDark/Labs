@@ -1,44 +1,56 @@
 package ua.nure.temnokhud.task2;
 
-public class Circle {
+import static java.lang.System.out;
+
+class Circle {
 
     public static void main(String... args) {
-        Circle circle = new Circle(5.4, 3.7, 7);
-        circle.print();
-        circle.move(5, 5);
-        circle.print();
-        circle.isInside(5, 5);
-        circle.isInside(25, 5);
-        circle.isInside(new Circle(9, 9, 3));
-        circle.isInside(new Circle(5, 5, 20));
+        out.println("~~~ c");
+        Circle c = new Circle(0, 0, 1);
+        c.print();
+        out.println("~~~ c.move(1, 1)");
+        c.move(1, 1);
+        c.print();
+        out.println("~~~ c.isInside(1, 1)");
+        out.println(c.isInside(1, 1));
+        out.println("~~~ c.isInside(10, 1)");
+        out.println(c.isInside(10, 1));
+        out.println("~~~ c2");
+        Circle c2 = new Circle(1, 1, 2);
+        c2.print();
+        out.println("~~~ c.isInside(c2)");
+        out.println(c.isInside(c2));
+        out.println("~~~ c2.isInside(c)");
+        out.println(c2.isInside(c));
+
+        out.println();
     }
 
     private double x;
     private double y;
     private double r;
 
-    public Circle () {
-        x = 0;
-        y = 0;
-        r = 0;
+    public Circle(double startX, double startY, double radius) {
+        x = startX;
+        y = startY;
+        r = radius;
     }
-    public Circle (double X, double Y, double Radius) {
-        x = X;
-        y = Y;
-        r = Radius;
+    public Circle(double startX, double startY, double radius) {
+        x = startX;
+        y = startY;
+        r = radius;
     }
 
     public double getX() {
         return x;
     }
+
     public double getY() {
         return y;
     }
+
     public double getR() {
         return r;
-    }
-    public void setRadius(double NewRadius) {
-        r = NewRadius;
     }
 
     public void move(double dx, double dy) {
@@ -47,28 +59,20 @@ public class Circle {
     }
 
     public boolean isInside(double X, double Y) {
-        boolean inside = Math.pow(x - X, 2) + Math.pow(y - Y, 2) <= r * r;
-
-        System.out.printf("Dot (%5.2f, %5.2f) is inside: %b", X, Y, inside);
-        System.out.println();
-        return inside;
+        return Math.pow(x - X, 2) + Math.pow(y - Y, 2) <= r * r;
     }
 
     public boolean isInside(Circle circle) {
         double distanceBetweenCenters =
-            Math.sqrt(Math.pow(x - circle.getX(), 2) + Math.pow(y - circle.getY(), 2));
-        boolean inside = distanceBetweenCenters + circle.getR() <= r;
+                Math.sqrt(Math.pow(x - circle.x, 2) + Math.pow(y - circle.y, 2));
+        return distanceBetweenCenters + circle.r <= r;
+    }
 
-        System.out.printf("Circle (%5.2f, %5.2f, %5.2f) is inside: %b",
-                circle.getX(), circle.getY(), circle.getR(), inside);
-        System.out.println();
-        return inside;
+    public String getInfo() {
+        return "Circle (" + x + ", " + y + ", " + r + ")";
     }
 
     public void print() {
-        System.out.println("== Circle info:");
-        System.out.println("   Center: (" + x + ", " + y + ")");
-        System.out.println("   Radius: " + r);
-        System.out.println();
+        out.println(getInfo());
     }
 }

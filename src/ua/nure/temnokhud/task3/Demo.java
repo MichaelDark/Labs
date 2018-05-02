@@ -1,6 +1,6 @@
 package ua.nure.temnokhud.task3;
 
-public class Demo {
+class Demo {
 
     public static void main(String... args) {
         System.out.println("=== Part 1 ===");
