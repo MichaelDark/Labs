@@ -2,7 +2,8 @@ package ua.nure.temnokhud.task2;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import static java.lang.System.*;
+
+import static java.lang.System.out;
 
 public class List<E> implements IList<E>, Iterable<E> {
 
@@ -149,8 +150,6 @@ public class List<E> implements IList<E>, Iterable<E> {
         out.println();
     }
 
-    // List implementation
-
     private static final int START_SIZE = 3;
 
     private Object[] container;
@@ -195,7 +194,7 @@ public class List<E> implements IList<E>, Iterable<E> {
             throw new ArrayIndexOutOfBoundsException(index);
         }
 
-        return (E)container[index];
+        return (E) container[index];
     }
 
     public int indexOf(Object el) {
@@ -249,15 +248,22 @@ public class List<E> implements IList<E>, Iterable<E> {
             private int currentIndex = 0;
             private boolean canRemove = false;
 
+            @Override
             public boolean hasNext() {
                 return currentIndex <= List.this.last;
             }
 
+            @Override
             public E next() {
+                if (!hasNext()) {
+                    throw new IllegalStateException();
+                }
+
                 canRemove = true;
-                return (E)container[currentIndex++];
+                return (E) container[currentIndex++];
             }
 
+            @Override
             public void remove() {
                 if (!canRemove) {
                     throw new IllegalStateException();

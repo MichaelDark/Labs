@@ -30,11 +30,12 @@ class Circle {
     private double y;
     private double r;
 
-    public Circle(double startX, double startY, double radius) {
-        x = startX;
-        y = startY;
-        r = radius;
+    public Circle() {
+        x = 0;
+        y = 0;
+        r = 1;
     }
+
     public Circle(double startX, double startY, double radius) {
         x = startX;
         y = startY;
@@ -58,14 +59,22 @@ class Circle {
         y += dy;
     }
 
-    public boolean isInside(double X, double Y) {
-        return Math.pow(x - X, 2) + Math.pow(y - Y, 2) <= r * r;
+    public void resize(double newRadius) {
+        r = newRadius;
+    }
+
+    public boolean isInside(double pointX, double pointY) {
+        double squareDistance = Math.pow(x - pointX, 2) + Math.pow(y - pointY, 2);
+        double squareRadius = r * r;
+        return squareDistance <= squareRadius;
     }
 
     public boolean isInside(Circle circle) {
-        double distanceBetweenCenters =
-                Math.sqrt(Math.pow(x - circle.x, 2) + Math.pow(y - circle.y, 2));
-        return distanceBetweenCenters + circle.r <= r;
+        //double distanceBetweenCenters = Math.sqrt(Math.pow(x - circle.x, 2) + Math.pow(y - circle.y, 2));
+        double distanceBetweenCenters = Math.sqrt(Math.pow(x - circle.getX(), 2) + Math.pow(y - circle.getY(), 2));
+        double radiusDifference = r - circle.r;
+        //double radiusDifference = r - circle.getR();
+        return distanceBetweenCenters <= radiusDifference;
     }
 
     public String getInfo() {

@@ -12,6 +12,7 @@ import static java.lang.Character.*;
 class Part1 {
 
     public static void main(String... args) {
+        /*
         List<String> fileText = readAllFileLines("Part1.txt", "UTF8");
 
         String buffer = fileText.get(0);
@@ -92,6 +93,6 @@ class Part1 {
                 symbols[i] = toUpperCase(c);
             }
         }
-        return new String(symbols);
+        return new String(symbols);*/
     }
 }
