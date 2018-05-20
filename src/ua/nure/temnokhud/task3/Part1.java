@@ -1,98 +1,43 @@
 package ua.nure.temnokhud.task3;
 
-import java.io.*;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static ua.nure.temnokhud.task3.Functions.readFile;
 
-import static java.lang.Character.*;
+public class Part1 {
+    final static String FILE_NAME = "part1.txt";
 
-class Part1 {
-
-    public static void main(String... args) {
-        /*
-        List<String> fileText = readAllFileLines("Part1.txt", "UTF8");
-
-        String buffer = fileText.get(0);
-        Matcher m = Pattern.compile("[a-zA-Zа-яА-ЯёЁіІїЇ]").matcher(buffer);
-
-        StringBuffer sb = new StringBuffer();
-        int last = 0;
-        while (m.find()) {
-            m.appendReplacement(sb, m.group())
-            sb.append(m.group(0).toUpperCase());
-            last = m.end();
-        }
-        sb.append(buffer.substring(last));
-
-        System.out.println(buffer.toString());
-
-        System.out.println("Input before: ");
-        printRows(fileText);
-
+    public static void main(String[] args) throws IOException {
+        System.out.println(readFile(FILE_NAME));
+        System.out.println("--------");
+        System.out.println(changeCase(readFile(FILE_NAME)));
     }
 
-    private static List<String> readAllFileLines(String filePath, String charset) {
-        List<String> fileText = new ArrayList<String>();
-        try {
-            File fileDir = new File(filePath);
+    private static String changeCase(StringBuilder elements) {
+        StringBuilder answer = new StringBuilder(elements);
+        Pattern pattern = Pattern.compile("([\\w&&[\\D]]{4,})", Pattern.UNICODE_CHARACTER_CLASS);
+        Matcher matcher = pattern.matcher(answer);
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                            new FileInputStream(fileDir), charset));
+        while (matcher.find()) {
+            String elem = matcher.group();
+            int index = matcher.start();//answer.lastIndexOf(elem);
+            Pattern patternSmall = Pattern.compile("\\w", Pattern.UNICODE_CHARACTER_CLASS);
+            Matcher matcherSmall = patternSmall.matcher(elem);
 
-            String str;
-
-            while ((str = in.readLine()) != null) {
-                fileText.add(str);
-                System.out.println(str);
-            }
-
-            in.close();
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        return fileText;
-    }
-
-    private static void printRows(String[] rows) {
-        for(String row : rows) {
-            System.out.println(row);
-        }
-    }
-
-    private static void printRows(List<String> rows) {
-        for(int i = 0; i < rows.size(); i++) {
-            System.out.println(rows.get(i));
-        }
-    }
-
-    private static String invertCase(String string) {
-        char[] symbols = string.toCharArray();
-        for (int i = 0; i < symbols.length; i++)
-        {
-            char c = symbols[i];
-            if (isUpperCase(c))
-            {
-                symbols[i] = toLowerCase(c);
-            }
-            else if (isLowerCase(c))
-            {
-                symbols[i] = toUpperCase(c);
+            while (matcherSmall.find()) {
+                String subElem = matcherSmall.group();
+                int subIndex = matcherSmall.start();
+                if (Character.isLowerCase(subElem.toCharArray()[0])) {
+                    answer.delete(index + subIndex, index + subIndex + 1);
+                    answer.insert(index + subIndex, subElem.toUpperCase());
+                } else if (Character.isUpperCase(subElem.toCharArray()[0])) {
+                    answer.delete(index + subIndex, index + subIndex + 1);
+                    answer.insert(index + subIndex, subElem.toLowerCase());
+                }
             }
         }
-        return new String(symbols);*/
+        return answer.toString();
     }
+
 }

@@ -9,3 +9,17 @@
 .gitattributes,2\4\24139dae656713ba861751fb2c2ac38839349a7a
 8
 Labs.iml,4\b\4b878adc40c3d53bdb9d612e8416124db171d590
+V
+&src\ua\nure\temnokhud\task3\Part5.java,a\8\a8efe9e44f907a270d65b5ffec2acfc102a0e980
+U
+%src\ua\nure\temnokhud\task3\Demo.java,4\5\4548df6f339083fef5047ccf33eec08a4a6da253
+V
+&src\ua\nure\temnokhud\task3\Part1.java,0\0\00a3ef269174238deb6d5df4db7c720225b43aa8
+V
+&src\ua\nure\temnokhud\task3\Part2.java,8\3\83df575756f966cba1a9784a452279701fd93c34
+Z
+*src\ua\nure\temnokhud\task3\Functions.java,7\3\73f76793b1f8447e1780cbb42529d2558b9b4a8f
+V
+&src\ua\nure\temnokhud\task3\Part3.java,9\d\9d16c884c909a0c7d3903a2d433e81f18105be60
+V
+&src\ua\nure\temnokhud\task3\Part4.java,1\f\1f4752ec1c73966b51d4ed7bd27268e9e01536bc

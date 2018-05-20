@@ -1,0 +1,3 @@
+ivanov;Ivan Ivanov;ivanov@mail.ru
+петров;Петр Петров;petrov@google.com
+lennon;John Lennon;lennon@google.com

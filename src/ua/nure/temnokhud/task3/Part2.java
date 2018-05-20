@@ -1,66 +1,44 @@
 package ua.nure.temnokhud.task3;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import static ua.nure.temnokhud.task3.Functions.readFile;
 
-class Part2 {
+public class Part2 {
+    final static String FILE_NAME = "part2.txt";
 
-    public static void main(String... args) {
-        String[] rows = readAllFile("Part2.txt");
-
-        System.out.println("Input before: ");
-        printRows(rows);
-
-        for(int i = 0; i < rows.length; i++) {
-            String[] words = rows[i].split(" ");
-            for (int j = 0; j < words.length; j++) {
-                if(hasEqualSymbols(words[j])) {
-                    words[j] = "";
-                }
-            }
-            rows[i] = String.join(" ", words);
-        }
-
-        System.out.println("Input after: ");
-        printRows(rows);
-
+    public static void main(String[] args) throws IOException {
+        StringBuilder file = readFile(FILE_NAME);
+        System.out.println(file);
+        System.out.println("-----");
+        String output = deleteRepeat(file);
+        System.out.println(output);
     }
 
-    private static String[] readAllFile(String filePath) {
-        String fileText = "";
-
-        try(FileReader reader = new FileReader("Part1.txt")) {
-            String line = "";
-            BufferedReader bufferedReader = new BufferedReader(reader);
-
-            while((line = bufferedReader.readLine()) != null) {
-                fileText += line + "\r\n";
-            }
-            bufferedReader.close();
-        } catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-        return fileText.split("\r\n");
-    }
-
-    private static void printRows(String[] rows) {
-        for(String row : rows) {
-            System.out.println(row);
-        }
-    }
-
-    private static boolean hasEqualSymbols(String string) {
-        char[] word = string.toCharArray();
-
-        for(int i = 0; i < word.length; i++) {
-            for(int j = i + 1; j < word.length; j++) {
-                if(word[i] == word[j]) {
-                    return true;
-                }
+    private static String deleteRepeat(StringBuilder file) {
+        StringBuilder copyFile = new StringBuilder(file);
+        Pattern pattern = Pattern.compile("\\b(\\w+)\\b", Pattern.UNICODE_CHARACTER_CLASS);
+        Matcher matcher = pattern.matcher(file);
+        int shift = 0;
+        while (matcher.find()) {
+            String elem = matcher.group();
+            int index = matcher.start();
+            Pattern subPattern = Pattern.compile("(\\w).*\\1", Pattern.UNICODE_CHARACTER_CLASS);
+            Matcher subMatcher = subPattern.matcher(elem);
+            if (subMatcher.find()) {
+                copyFile.delete(index - shift, index - shift + elem.length());
+                shift += elem.length();
             }
         }
 
-        return false;
+        Pattern CLEAR_PATTERN = Pattern.compile("[\\s]+");
+        String answer = CLEAR_PATTERN.matcher(copyFile).replaceAll(" ").trim();
+        // without spaces
+        //return answer;
+        System.out.println("without spaces:");
+        System.out.println(answer);
+        // original
+        return copyFile.toString();
     }
 }
