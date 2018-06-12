@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 import static java.lang.System.in;
 import static java.lang.System.out;
-import static ua.nure.temnokhud.task3.Functions.readFile;
-import static ua.nure.temnokhud.task3.Functions.getPatternedString;
+import static ua.nure.temnokhud.task3.Utility.readFile;
+import static ua.nure.temnokhud.task3.Utility.getPatternedString;
 
 public class Part4 {
     private static final String FILE_NAME = "part4.txt";

@@ -3,10 +3,10 @@ package ua.nure.temnokhud.task3;
 import java.io.IOException;
 
 import static java.lang.System.out;
-import static ua.nure.temnokhud.task3.Functions.readFile;
-import static ua.nure.temnokhud.task3.Functions.convert1;
-import static ua.nure.temnokhud.task3.Functions.convert2;
-import static ua.nure.temnokhud.task3.Functions.convert3;
+import static ua.nure.temnokhud.task3.Utility.readFile;
+import static ua.nure.temnokhud.task3.Utility.convert1;
+import static ua.nure.temnokhud.task3.Utility.convert2;
+import static ua.nure.temnokhud.task3.Utility.convert3;
 
 public class Part5 {
     private static final String FILE_NAME = "part5.txt";

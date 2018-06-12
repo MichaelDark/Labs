@@ -1,7 +1,7 @@
 package ua.nure.temnokhud.task1;
 
 import static java.lang.System.out;
-import static ua.nure.temnokhud.task1.Functions.*;
+import static ua.nure.temnokhud.task1.Utility.*;
 
 class Part9 {
     private Part9() {

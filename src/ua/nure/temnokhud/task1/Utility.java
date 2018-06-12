@@ -2,7 +2,7 @@ package ua.nure.temnokhud.task1;
 
 import static java.lang.System.*;
 
-class Functions {
+class Utility {
     /**
      * Prints standard task header which includes caption and arguments
      */

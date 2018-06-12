@@ -1,6 +1,6 @@
 package ua.nure.temnokhud.task1;
 
-import static ua.nure.temnokhud.task1.Functions.printHeader;
+import static ua.nure.temnokhud.task1.Utility.printHeader;
 
 class Demo {
     public static void main(String[] args) {

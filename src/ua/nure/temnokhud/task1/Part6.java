@@ -3,7 +3,7 @@ package ua.nure.temnokhud.task1;
 import java.util.Arrays;
 
 import static java.lang.System.out;
-import static ua.nure.temnokhud.task1.Functions.*;
+import static ua.nure.temnokhud.task1.Utility.*;
 
 class Part6 {
     private Part6() {

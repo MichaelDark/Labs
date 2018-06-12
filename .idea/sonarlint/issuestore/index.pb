@@ -5,7 +5,7 @@
 	Part2.txt,7\f\7fa0889f8b3b7594758b60ff68faf1d9760568d8
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
->
-.gitattributes,2\4\24139dae656713ba861751fb2c2ac38839349a7a
 8
 Labs.iml,4\b\4b878adc40c3d53bdb9d612e8416124db171d590
+9
+	part5.txt,1\2\12f4fe21b501804c4d45aec5501872fe586dff8a

@@ -1,3 +1,4 @@
-ivanov;Ivan Ivanov;ivanov@mail.ru
+﻿ivanov;Ivan Ivanov;ivanov@mail.ru
 петров;Петр Петров;petrov@google.com
 lennon;John Lennon;lennon@google.com
+temnokhud;Mykhailo Temnokhud;michael_dark@nure.ua

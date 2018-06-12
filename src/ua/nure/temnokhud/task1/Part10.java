@@ -1,6 +1,6 @@
 package ua.nure.temnokhud.task1;
 
-import static ua.nure.temnokhud.task1.Functions.*;
+import static ua.nure.temnokhud.task1.Utility.*;
 
 class Part10 {
     private Part10() {}

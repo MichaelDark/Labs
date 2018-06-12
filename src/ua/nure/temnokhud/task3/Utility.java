@@ -12,10 +12,10 @@ import java.util.regex.Pattern;
 
 import static java.lang.System.out;
 
-public class Functions {
-    private Functions() {}
+public class Utility {
+    private Utility() {}
 
-    static StringBuilder readFile(String fileName) throws IOException {
+    public static StringBuilder readFile(String fileName) throws IOException {
         StringBuilder answer = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
             String line = null;
@@ -28,11 +28,11 @@ public class Functions {
     }
 
     //Part 1
-    static String changeCase(StringBuilder elements) {
-        StringBuilder answer = new StringBuilder(elements);
+    public static String changeCase(StringBuilder elements) {
+        StringBuilder result = new StringBuilder(elements);
         Pattern patternWord = Pattern.compile("[\\w\\S]{3,}", Pattern.UNICODE_CHARACTER_CLASS);
         Pattern patternLetter = Pattern.compile("\\w", Pattern.UNICODE_CHARACTER_CLASS);
-        Matcher matcherWord = patternWord.matcher(answer);
+        Matcher matcherWord = patternWord.matcher(result);
         Matcher matcherLetter;
         String word;
         String letter;
@@ -46,20 +46,20 @@ public class Functions {
                 letter = matcherLetter.group();
                 int subIndex = matcherLetter.start();
                 if (Character.isLowerCase(letter.charAt(0))) {
-                    answer.delete(index + subIndex, index + subIndex + 1);
-                    answer.insert(index + subIndex, letter.toUpperCase());
+                    result.delete(index + subIndex, index + subIndex + 1);
+                    result.insert(index + subIndex, letter.toUpperCase());
                 } else if (Character.isUpperCase(letter.charAt(0))) {
-                    answer.delete(index + subIndex, index + subIndex + 1);
-                    answer.insert(index + subIndex, letter.toLowerCase());
+                    result.delete(index + subIndex, index + subIndex + 1);
+                    result.insert(index + subIndex, letter.toLowerCase());
                 }
             }
         }
-        return answer.toString();
+        return result.toString();
     }
 
     //Part 2
-    static String deleteRepeat(StringBuilder file) {
-        StringBuilder copyFile = new StringBuilder(file);
+    public static String deleteRepeat(StringBuilder file) {
+        StringBuilder result = new StringBuilder(file);
         Pattern pattern = Pattern.compile("\\b(\\w+)\\b", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(file);
         int shift = 0;
@@ -69,19 +69,19 @@ public class Functions {
             Pattern subPattern = Pattern.compile("(\\w).*\\1", Pattern.UNICODE_CHARACTER_CLASS);
             Matcher subMatcher = subPattern.matcher(elem);
             if (subMatcher.find()) {
-                copyFile.delete(index - shift, index - shift + elem.length());
+                result.delete(index - shift, index - shift + elem.length());
                 shift += elem.length();
             }
         }
 
-        return Pattern.compile("[\\s]+").matcher(copyFile).replaceAll(" ").trim();
+        return Pattern.compile("[\\s]+").matcher(result).replaceAll(" ").trim();
     }
 
     //Part 3
-    static String deleteDuplicates(StringBuilder file) {
+    public static String deleteDuplicates(StringBuilder file) {
         StringBuilder copyFile = new StringBuilder(file);
         List<String> allDuplicates = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\b(\\w+)\\b(?=.*?(\\1)+)", Pattern.UNICODE_CHARACTER_CLASS); //\\b(\\w+)(?:\\s+\\1\\b)+ // \b(\w+)\b.*\1
+        Pattern pattern = Pattern.compile("\\b(\\w+)\\b(?=.*?(\\1)+)", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(file);
         while (matcher.find()) {
             String elem = matcher.group(1);
@@ -91,8 +91,7 @@ public class Functions {
         Matcher matcher1 = pattern1.matcher(file);
         int shift = 0;
         while(matcher1.find()){
-            for (String elem :
-                    allDuplicates) {
+            for (String elem : allDuplicates) {
                 String word = matcher1.group(1);
                 int index = matcher1.start();
                 if(Objects.equals(elem, word)){
@@ -107,7 +106,7 @@ public class Functions {
     }
 
     //Part 4
-    static String getPatternedString(Pattern pattern, String content) {
+    public static String getPatternedString(Pattern pattern, String content) {
         Matcher matcher = pattern.matcher(content);
         StringBuilder answer = new StringBuilder();
         while(matcher.find()){
@@ -132,7 +131,7 @@ public class Functions {
         return builder.toString();
     }
 
-    static String convert2(String input) {
+    public static String convert2(String input) {
         Pattern pattern = Pattern.compile("(?:\\w+)(?:;)([\\w]+)(?:\\s)([\\w]+)(?:;)(.+)", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(input);
         StringBuilder builder = new StringBuilder();
@@ -147,7 +146,7 @@ public class Functions {
         return builder.toString();
     }
 
-    static String convert3(String input) {
+    public static String convert3(String input) {
         Pattern pattern = Pattern.compile("(.[^;]+)(?:.[^@]+)(?:@)(.+)",Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(input);
         List<StringBuilder> list = new ArrayList<>();

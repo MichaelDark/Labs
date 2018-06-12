@@ -3,7 +3,7 @@ package ua.nure.temnokhud.task1;
 import java.util.regex.Pattern;
 
 import static java.lang.System.out;
-import static ua.nure.temnokhud.task1.Functions.getSumFromString;
+import static ua.nure.temnokhud.task1.Utility.getSumFromString;
 
 class Part11 {
     private Part11() {
