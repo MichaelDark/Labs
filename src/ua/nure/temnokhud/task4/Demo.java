@@ -1,12 +1,10 @@
 package ua.nure.temnokhud.task4;
 
-import java.io.IOException;
-
 import static java.lang.System.out;
 
 class Demo {
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) throws Exception {
 
         out.println("=== Part 1 ===");
         Part1.main(new String[]{});

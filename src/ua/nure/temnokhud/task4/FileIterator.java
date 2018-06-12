@@ -18,7 +18,7 @@ public class FileIterator implements Iterable<String> {
 
     public Iterator<String> iterator() {
         return new Iterator<String>() {
-            Pattern patternWord = Pattern.compile("[\\w\\S]+", Pattern.UNICODE_CHARACTER_CLASS);
+            Pattern patternWord = Pattern.compile("\\b[\\p{L}-]+\\b", Pattern.UNICODE_CHARACTER_CLASS);
             Matcher matcher = patternWord.matcher(file);
             int currIndex = 1;
 

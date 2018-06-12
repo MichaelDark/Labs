@@ -1,17 +1,13 @@
 package ua.nure.temnokhud.task4;
 
-import static ua.nure.temnokhud.task4.Utility.*;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.lang.System.*;
+import static ua.nure.temnokhud.task4.Utility.readFile;
 
 public class WordContainer {
     ArrayList<Word> words = new ArrayList<>();
@@ -35,17 +31,17 @@ public class WordContainer {
             }
         }
     }
-    public ArrayList<Word> getWords(){
+    public List<Word> getWords(){
         return this.words;
     }
-    public ArrayList<Word> sort() {
+    public List<Word> sort() {
         Collections.sort(this.words);
         return this.words;
     }
 
     public void print() {
         for (Word word : this.words) {
-            System.out.println("'" + word.getText() + "': " + word.getFrequency());
+            out.println("'" + word.getText() + "': " + word.getFrequency());
         }
     }
 
