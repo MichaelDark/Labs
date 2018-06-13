@@ -8,10 +8,9 @@ import java.nio.charset.StandardCharsets;
 import static java.lang.System.out;
 
 public class Part2 {
-    //public static final String LINE_SEPARATOR = String.format("\\r%n").intern();
     public static final byte[] LINE_SEPARATOR = System.lineSeparator().getBytes(StandardCharsets.UTF_8);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Thread[] threads = new Thread[10];
 
 		for (int i = 0; i < 10; i++) {
@@ -39,6 +38,7 @@ public class Part2 {
 
 	public static RandomAccessFile file;
 	private static int position[] = new int[10];
+
 	static {
 		try {
 			file = new RandomAccessFile("task52.txt", "rw");

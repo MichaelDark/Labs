@@ -1,4 +1,4 @@
 
-[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8‹â°²¿,
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
 jsquid:S00116"TRename this field "SEPARATOR" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã›Ðÿ
+[squid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€

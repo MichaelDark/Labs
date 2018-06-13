@@ -3,7 +3,7 @@ package ua.nure.temnokhud.task5;
 import static java.lang.System.out;
 
 public class Demo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		out.println("===Part1===");
 		Part1.main(new String[] {});
 		out.println();

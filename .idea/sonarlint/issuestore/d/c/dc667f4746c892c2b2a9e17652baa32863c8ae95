@@ -1,7 +1,7 @@
 
-csquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(âï£˜8ˆ…€²¿,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ºÑ†²¿,
-hsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(‚ÊŽ“ýÿÿÿÿ8ˆ…€²¿,
-Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ºÑ†²¿,
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(“×·ôþÿÿÿÿ8ð®ó´¿,
+\squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(âï£˜
+asquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(‚ÊŽ“ýÿÿÿÿ
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(“×·ôþÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
