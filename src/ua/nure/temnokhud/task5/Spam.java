@@ -2,22 +2,18 @@ package ua.nure.temnokhud.task5;
 
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 public class Spam {
 
 	public static void main(String[] args) {
-		String[] messages = new String[] { "@@@", "bbbbbbb" };
-		int[] times = new int[] { 333, 222 };
+		String[] messages = new String[] { "Pupa", "Lupa" };
+		int[] times = new int[] { 111, 333 };
 		Spam spam = new Spam(messages, times);
 		Scanner scan = new Scanner(System.in);
 		while (!scan.hasNextLine());
 		spam.interruptAll();
 		scan.close();
-	}
-
-	public void interruptAll() {
-		for (int i = 0; i < threads.length; ++i) {
-			threads[i].interrupt();
-		}
 	}
 
 	private Thread[] threads;
@@ -27,6 +23,12 @@ public class Spam {
 		for (int i = 0; i < messages.length; ++i) {
 			threads[i] = new Thread(new Worker(messages[i], times[i]));
 			threads[i].start();
+		}
+	}
+
+	public void interruptAll() {
+		for (int i = 0; i < threads.length; ++i) {
+			threads[i].interrupt();
 		}
 	}
 
@@ -46,7 +48,7 @@ public class Spam {
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				}
-				System.out.println(message);
+				out.println(message);
 			}
 		}
 	}

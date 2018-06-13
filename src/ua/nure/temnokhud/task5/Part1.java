@@ -4,9 +4,14 @@ import java.io.InputStream;
 
 public class Part1 {
 	public static void main(String[] args) {
-		InputStream inCache = System.in;
-		System.setIn(new MyInStream());
-		Spam.main(null);
-		System.setIn(inCache);
+	    boolean showDemo = true;
+	    if(showDemo) {
+            InputStream mockIn = System.in;
+            System.setIn(new ThreeSecondInputStream());
+            Spam.main(null);
+            System.setIn(mockIn);
+        } else {
+            Spam.main(null);
+        }
 	}
 }

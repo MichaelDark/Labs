@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 import static ua.nure.temnokhud.task4.Utility.readFile;
 
 public class Part4 {

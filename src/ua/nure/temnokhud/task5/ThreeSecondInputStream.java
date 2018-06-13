@@ -2,16 +2,17 @@ package ua.nure.temnokhud.task5;
 
 import java.io.IOException;
 
-public class MyInStream extends java.io.InputStream {
+public class ThreeSecondInputStream extends java.io.InputStream {
 	private int counter = 0;
 	private final String SEPARATOR = System.lineSeparator();
 
 	public int read() throws IOException {
 		if (counter == 0) {
-			try {
+		    try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
-			}
+		        e.printStackTrace();
+            }
 			return SEPARATOR.charAt(counter++);
 		}
 		else if (counter < SEPARATOR.length()) {

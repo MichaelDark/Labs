@@ -1,12 +1,8 @@
 package ua.nure.temnokhud.task4;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import static java.lang.System.out;
 
 public class Part5 {
 
@@ -32,7 +28,7 @@ public class Part5 {
 
         }
         for (int i = 0; i < result.length && i < 3; i++) {
-            System.out.println(result[i].getText() + " ===> " +  result[i].getFrequency());
+            out.println(result[i].getText() + " ===> " +  result[i].getFrequency());
         }
     }
 }
